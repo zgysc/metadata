@@ -1,27 +1,4 @@
-#!/bin/bash
-# ----------------------------------------------------------------------
-# name:         jfinal.sh
-# version:      1.0
-# author:       yangfuhai
-# email:        fuhai999@gmail.com
-#
-# 使用说明：
-# 1: 该脚本使用前需要首先修改 MAIN_CLASS 值，使其指向实际的启动类
-#
-# 2：使用命令行 ./jfinal.sh start | stop | restart 可启动/关闭/重启项目  
-#
-# 3: JAVA_OPTS 可通过 -D 传入 undertow.port 与 undertow.host 这类参数覆盖
-#    配置文件中的相同值此外还有 undertow.resourcePath、undertow.ioThreads、
-#    undertow.workerThreads 共五个参数可通过 -D 进行传入，该功能尽可能减少了
-#    修改 undertow 配置文件的必要性
-#
-# 4: JAVA_OPTS 可传入标准的 java 命令行参数，例如 -Xms256m -Xmx1024m 这类常用参数
-#
-# 5: 函数 start() 给出了 4 种启动项目的命令行，根据注释中的提示自行选择合适的方式
-#
-# ----------------------------------------------------------------------
 
-# 启动入口类，该脚本文件用于别的项目时要改这里
 MAIN_CLASS=com.demo.DemoConfig
 
 if [[ "$MAIN_CLASS" == "com.yourpackage.YourMainClass" ]]; then
