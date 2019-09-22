@@ -1,0 +1,7 @@
+# config
+jdbcUrl = jdbc:mysql://localhost/metadata?characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
+user = root
+password =ctbrirootpwd
+devMode = true
+
+pageSize=5

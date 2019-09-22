@@ -1,0 +1,77 @@
+<fieldset class="solid">
+	<legend>创建/修改DataTypes</legend>
+	<input type="hidden" name="datatypes.id" value="#(datatypes.id??)" />
+	<div>
+		<label>DataType名称</label>
+		<select name="datatypes.parentName">
+			#for(x : dts)
+			#if(x.name == datatypes.parentName??)
+			<option selected>#(x.name)</option>
+			#else
+			<option >#(x.name)</option>
+			#end
+			#end
+		</select>
+
+	</div>
+	<div>
+		<label>参数名称</label>
+		<input type=text name="datatypes.name" value="#(datatypes.name??)" />
+	</div>
+
+	<div>
+		<label>选择大类别</label>
+		<select name="datatypes.mainType">
+			<option value="1" selected>PrimaryType</option>
+			<option value="2">Enum</option>
+		</select>
+	</div>
+	<div>
+		<label>选择Basic类别</label>
+		<select name="datatypes.subType">
+			<option selected>string</option>
+			<option>int</option>
+			<option>boolean</option>
+			<option>float</option>
+		</select>
+	</div>
+	<div>
+		<label>参数描述</label>
+		<input type=text name="datatypes.desc" value="#(datatypes.desc??)" />
+	</div>
+	<div>
+		<label>引用对象名称</label>
+		<select name="datatypes.objName">
+			<option value="" selected>无</option>
+			#for(obj : objs)
+			<option value="#(obj.name)">#(obj.name)</option>
+			#end
+		</select>
+	</div>
+	<div>
+		<label>必选性</label>
+		<select name="datatypes.existence">
+			<option value="1" selected>必选</option>
+			<option value="2">条件必选</option>
+			<option value="3">可选</option>
+		</select>
+	</div>
+	<div>
+		<label>最小出现次数</label>
+		<select name="datatypes.minOccur">
+			<option value="1" selected>1</option>
+			<option value="0">0</option>
+		</select>
+	</div>
+	<div>
+		<label>最大出现次数</label>
+		<select name="datatypes.maxOccur">
+			<option value="1" selected>1</option>
+			<option value="999">*</option>
+		</select>
+	</div>
+
+	</div>
+
+	<div><label>&nbsp;</label><input value='submit' type='submit'></div>
+</fieldset>

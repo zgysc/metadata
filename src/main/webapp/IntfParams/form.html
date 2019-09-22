@@ -1,0 +1,89 @@
+<fieldset class="solid">
+<legend>创建intfParams</legend>
+<input type="hidden" name="intfParams.id" value="#(intfParams.id??)" />
+<div>
+	<label>接口名称</label>
+		<select name="intfParams.intfName">
+			#for(x : intfs)
+				<option value="#(x.intfName)">#(x.seq). #(x.name)#(x.intfName)</option>
+			#end
+		</select>
+
+</div>
+	<div>
+		<label>参数名称</label>
+		<input type=text name="intfParams.paramName" value="#(intfParams.paramName??)" />
+	</div>
+
+	<div>
+		<label>选择大类别</label>
+		<select name="intfParams.paramMainType">
+			<option value="1" selected>PrimaryType</option>
+			<option value="2">Enum</option>
+			<option value="3">SimpleDataType</option>
+			<option value="4">ObjClass</option>
+		</select>
+	</div>
+	<div>
+		<label>选择Basic类别</label>
+		<select name="intfParams.paramType">
+			<option selected>string</option>
+			<option>int</option>
+			<option>boolean</option>
+			<option>float</option>
+		</select>
+	</div>
+	<div>
+		<label>参数描述</label>
+		<input type=text name="intfParams.paramDesc" value="#(intfParams.paramDesc??)" />
+	</div>
+	<div>
+		<label>必选性</label>
+		<select name="intfParams.existence">
+			<option value="1" selected>必选</option>
+			<option value="2">条件必选</option>
+			<option value="3">可选</option>
+		</select>
+	</div>
+	<div>
+		<label>最小出现次数</label>
+		<select name="intfParams.minOccur">
+			<option value="1" selected>1</option>
+			<option value="0">0</option>
+		</select>
+	</div>
+	<div>
+	<label>最大出现次数</label>
+	<select name="intfParams.maxOccur">
+		<option value="1" selected>1</option>
+		<option value="999">*</option>
+	</select>
+	</div>
+	<div>
+		<label>引用对象名称</label>
+		<select name="intfParams.objName">
+			<option value="" selected>无</option>
+			#for(obj : objs)
+			<option value="#(obj.name)">#(obj.name) #if(obj.mainType==1) PrimaryType #else if(obj.mainType==2) 枚举类 #else if(obj.mainType==3) 简单对象 #else 复杂class #end</option>
+			#end
+		</select>
+	</div>
+	<div>
+		<label>引用方式</label>
+		<select name="intfParams.refType" style="vertical-align: middle; height: 30px">
+			<option value="1" selected>值引用</option>
+			<option value="2">结构引用</option>
+		</select>
+	</div>
+	<div>
+		<label>方向</label>
+		<select name="intfParams.inOutFlag">
+			<option value="1" selected>入参</option>
+			<option value="2">出参</option>
+		</select>
+	</div>
+
+</div>
+
+<div><label>&nbsp;</label><input value='submit' type='submit'></div>
+</fieldset>

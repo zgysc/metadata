@@ -1,0 +1,52 @@
+#@layout()
+#define main()
+<h1>Intf管理&nbsp;&nbsp;<a href="/Intf/add">创建新Intf...</a>&nbsp;&nbsp; 选择项目：<select id="project" onchange="changeProject();">
+	<option value="0" >选择项目...</option>
+	#for(x : projects)
+	#if(projectId && projectId == x.id)
+	<option value="#(x.id)" selected>#(x.name)</option>
+	#else
+	<option value="#(x.id)" >#(x.name)</option>
+	#end
+	#end
+</select><button onclick="changeProject();">切换项目</button></h1>
+<div class="table_box">
+	<table class='list'>
+		<tbody>
+			<tr>
+			<th>序号</th>
+			<th>名称</th>
+			<th>接口名称</th>
+			<th>描述</th>
+			<th>操作</th>
+			</tr>
+			#for(x : IntfList.getList())
+			<tr>
+				<td>#(x.seq)</td>
+				<td>#(x.name)</td>
+				<td>#(x.intfName)</td>
+				<td>#(x.desc)</td>
+				<td>&nbsp;<a href="/Intf/edit/#(x.id)">修改</a>
+					&nbsp;<a href="/Intf/delete/#(x.id)">删除</a>
+					&nbsp;<a href="/IntfParams/?intf=#(x.intfName)">编辑参数</a>
+				</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+	#@paginate(IntfList.pageNumber,IntfList.totalPage, "/Intf/")
+</div>
+<script>
+	function changeProject(){
+        $.ajax({
+            url:"/changeProject/"+$("#project").val(),
+            type:"post",
+            contentType:"application/json;charset=utf-8",//默认值
+            dataType:"json",
+            success:function(data){
+				window.location.href='/Intf';
+            }
+        });
+	}
+</script>
+#end

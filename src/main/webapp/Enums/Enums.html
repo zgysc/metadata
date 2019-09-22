@@ -1,0 +1,25 @@
+#@layout()
+#define main()
+<h1>Enums管理&nbsp;&nbsp;<a href="/Enums/add">创建新Enums...</a></h1>
+<div class="table_box">
+	<table class='list'>
+		<tbody>
+			<tr>
+			<th>ID</th>
+			<th>枚举名称</th>
+			<th>值</th>
+			<th>操作</th>
+			</tr>
+			#for(x : EnumsList.getList())
+			<tr>
+				<td>#(x.id)</td>
+				<td>#(x.enumName)</td>
+				<td>#(x.paramValue)</td>
+				<td>&nbsp;<a href="/Enums/edit/#(x.id)">修改</a>&nbsp;<a href="/Enums/delete/#(x.id)">删除</a></td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+	#@paginate(EnumsList.pageNumber,EnumsList.totalPage, "/Enums")
+</div>
+#end

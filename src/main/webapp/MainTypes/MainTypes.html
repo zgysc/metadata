@@ -1,0 +1,38 @@
+#@layout()
+#define main()
+<h1>MainTypes管理&nbsp;&nbsp;<a href="/MainTypes/add">创建新MainTypes...</a></h1>
+<div class="table_box">
+	<table class='list'>
+		<tbody>
+			<tr>
+			<th>ID</th>
+			<th>名称</th>
+			<th>描述</th>
+			<th>大类别</th>
+
+			<th>操作</th>
+			</tr>
+			#for(x : MainTypesList.getList())
+			<tr>
+				<td>#(x.id)</td>
+				<td>#(x.name)</td>
+				<td>#(x.desc)</td>
+				<td>#if(x.mainType==1) Enum #else if(x.mainType==2)  SimpleDataType #else ObjCls #end</td>
+
+				<td>&nbsp;<a href="/MainTypes/edit/#(x.id)">修改</a>
+					&nbsp;<a href="/MainTypes/delete/#(x.id)">删除</a>&nbsp;
+					#if(x.mainType==1)
+					<a href="/Enums/?mt=#(x.name)">编辑参数</a>
+					#else if(x.mainType==2)
+					<a href="/Datatypes/?mt=#(x.name)">编辑参数</a>
+					#else if(x.mainType==3)
+					<a href="/Objclasses/?mt=#(x.name)">编辑参数</a>
+					#end
+				</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+	#@paginate(MainTypesList.pageNumber,MainTypesList.totalPage, "/MainTypes")
+</div>
+#end

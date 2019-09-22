@@ -1,0 +1,21 @@
+<fieldset class="solid">
+<legend>Enums</legend>
+<input type="hidden" name="enums.id" value="#(enums.id??)" />
+<div>
+	<label>name</label>
+		<select name="enums.enumName" id="enumName">
+			#for(x : objs)
+			  #if(x.name == enums.enumName??)
+					<option selected>#(x.name)</option>
+			  #else
+					<option >#(x.name)</option>
+				#end
+			#end
+		</select>
+</div>
+	<div>
+		<label>value</label>
+		<input type=text name="enums.paramValue" value="#(enums.paramValue??)" />
+	</div>
+<div><label>&nbsp;</label><input value='submit' type='submit'></div>
+</fieldset>

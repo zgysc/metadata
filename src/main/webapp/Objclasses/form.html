@@ -1,0 +1,87 @@
+<fieldset class="solid">
+	<legend>ObjClasses</legend>
+	<input type="hidden" name="objclasses.id" value="#(objclasses.id??)" />
+	<div>
+		<label>对象名称</label>
+		<select name="objclasses.parentName">
+			#for(x : mts)
+			#if(x.name == objclasses.parentName??)
+			<option value="#(x.name)" selected>#(x.name)</option>
+			#else
+			<option value="#(x.name)">#(x.name)</option>
+			#end
+			#end
+		</select>
+
+	</div>
+	<div>
+		<label>参数名称</label>
+		<input type=text name="objclasses.name" value="#(objclasses.name??)" />
+	</div>
+
+	<div>
+		<label>选择大类别</label>
+		<select name="objclasses.mainType">
+			<option value="1" selected>PrimaryType</option>
+			<option value="2">Enum</option>
+			<option value="3">SimpleDataType</option>
+			<option value="4">ObjClass</option>
+		</select>
+	</div>
+	<div>
+		<label>选择Basic类别</label>
+		<select name="objclasses.subType">
+			<option selected>string</option>
+			<option>int</option>
+			<option>boolean</option>
+			<option>float</option>
+		</select>
+	</div>
+	<div>
+		<label>参数描述</label>
+		<input type=text name="objclasses.desc" value="#(objclasses.desc??)" />
+	</div>
+	<div>
+		<label>必选性</label>
+		<select name="objclasses.existence">
+			<option value="1" selected>必选</option>
+			<option value="2">条件必选</option>
+			<option value="3">可选</option>
+		</select>
+	</div>
+	<div>
+		<label>最小出现次数</label>
+		<select name="objclasses.minOccur">
+			<option value="1" selected>1</option>
+			<option value="0">0</option>
+		</select>
+	</div>
+	<div>
+		<label>最大出现次数</label>
+		<select name="objclasses.maxOccur">
+			<option value="1" selected>1</option>
+			<option value="999">*</option>
+		</select>
+	</div>
+	<div>
+		<label>引用对象名称</label>
+		<select name="objclasses.objName">
+			<option value="" selected>无</option>
+			#for(obj : objs)
+			<option value="#(obj.name)">#(obj.name) #if(obj.mainType==1) 枚举类 #else if(obj.mainType==2) 简单对象 #else if(obj.mainType==3) 复杂class #else  #end</option>
+			#end
+		</select>
+	</div>
+	<div>
+		<label>引用方式</label>
+		<select name="objclasses.refType" style="vertical-align: middle; height: 30px">
+			<option value="1" selected>值引用</option>
+			<option value="2">结构引用</option>
+		</select>
+	</div>
+
+
+	</div>
+
+	<div><label>&nbsp;</label><input value='submit' type='submit'></div>
+</fieldset>

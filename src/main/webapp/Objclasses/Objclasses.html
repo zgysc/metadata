@@ -1,0 +1,23 @@
+#@layout()
+#define main()
+<h1>Objclasses管理&nbsp;&nbsp;<a href="/Objclasses/add">创建新Objclasses...</a></h1>
+<div class="table_box">
+	<table class='list'>
+		<tbody>
+			<tr>
+			<th>ID</th>
+			<th>名称</th>
+			<th>操作</th>
+			</tr>
+			#for(x : ObjclassesList.getList())
+			<tr>
+				<td>#(x.id)</td>
+				<td>#(x.name)</td>
+				<td>&nbsp;<a href="/Objclasses/edit/#(x.id)">修改</a>&nbsp;<a href="/Objclasses/delete/#(x.id)">删除</a></td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+	#@paginate(ObjclassesList.pageNumber,ObjclassesList.totalPage, "/Objclasses")
+</div>
+#end

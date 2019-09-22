@@ -1,0 +1,41 @@
+#@layout()
+#define main()
+<h1>IntfParams管理&nbsp;&nbsp;<a href="/IntfParams/add">创建新IntfParams...</a></h1>
+<div class="table_box">
+	<table class='list'>
+		<tbody>
+			<tr>
+			<th>接口名称</th>
+			<th>参数名称</th>
+			<th>大类别</th>
+			<th>小类别</th>
+			<th>参数说明</th>
+			<th>必选性</th>
+			<th>最小次数</th>
+			<th>最大次数</th>
+			<th>引用的对象</th>
+			<th>引用的方式</th>
+			<th>入参出参</th>
+			<th>操作</th>
+			</tr>
+			#for(x : IntfParamsList.getList())
+			<tr>
+				<td>#(x.intfName)</td>
+				<td>#(x.paramName)</td>
+				<td>#if(x.paramMainType==1) PrimaryType #else if(x.paramMainType==2) Enum #else if(x.paramMainType==3) SimpleDataType #else ObjCls #end</td>
+				<td>#if(x.paramMainType==1) #(x.paramType) #end</td>
+				<td>#(x.paramDesc ??)</td>
+				<td>#if(x.existence==1) 必选 #else if(x.existence==2) 条件必选 #else if(x.existence==3) 可选 #else 未知 #end</td>
+				<td>#(x.minOccur)</td>
+				<td>#(x.maxOccur>10?"*" : x.maxOccur)</td>
+				<td>#(x.objName ??)</td>
+				<td>#if(x.refType==1)仅传值 #else if(x.refType==2) 完整结构 #else  #end</td>
+				<td>#(x.inOutFlag==1?"输入":"输出")</td>
+				<td>&nbsp;<a href="/IntfParams/edit/#(x.id)">修改</a>&nbsp;<a href="/IntfParams/delete/#(x.id)">删除</a></td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+	#@paginate(IntfParamsList.pageNumber,IntfParamsList.totalPage, "/IntfParams")
+</div>
+#end

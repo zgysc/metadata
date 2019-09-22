@@ -1,0 +1,21 @@
+<fieldset class="solid">
+<legend>MainTypes</legend>
+<input type="hidden" name="mainTypes.id" value="#(mainTypes.id??)" />
+<div>
+	<label>name</label>
+		<input type=text name="mainTypes.name" value="#(mainTypes.name??)" />
+</div>
+	<div>
+		<label>desc</label>
+		<input type=text name="mainTypes.desc" value="#(mainTypes.desc??)" />
+	</div>
+	<div>
+		<label>mainType</label>
+		<select name="mainTypes.mainType">
+			<option value="1" selected>Enum</option>
+			<option value="2" >SimpleDataType</option>
+			<option value="3" >ObjectClass</option>
+		</select>
+	</div>
+<div><label>&nbsp;</label><input value='submit' type='submit'></div>
+</fieldset>

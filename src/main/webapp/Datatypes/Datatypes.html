@@ -1,0 +1,33 @@
+#@layout()
+#define main()
+<h1>Datatypes管理&nbsp;&nbsp;<a href="/Datatypes/add">创建新Datatypes...</a></h1>
+<div class="table_box">
+	<table class='list'>
+		<tbody>
+			<tr>
+
+			<th>父DataType</th>
+			<th>参数名称</th>
+			<th>类别</th>
+			<th>描述</th>
+			<th>最小出现次数</th>
+			<th>最大出现次数</th>
+			<th>操作</th>
+			</tr>
+			#for(x : DatatypesList.getList())
+			<tr>
+
+				<td>#(x.parentName)</td>
+				<td>#(x.name)</td>
+				<td>#(x.subType)</td>
+				<td>#(x.desc)</td>
+				<td>#(x.minOccur)</td>
+				<td>#(x.maxOccur)</td>
+				<td>&nbsp;<a href="/Datatypes/edit/#(x.id)">修改</a>&nbsp;<a href="/Datatypes/delete/#(x.id)">删除</a></td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+	#@paginate(DatatypesList.pageNumber,DatatypesList.totalPage, "/Datatypes")
+</div>
+#end
